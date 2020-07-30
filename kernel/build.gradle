@@ -27,8 +27,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation 'com.tencent:mmkv:1.2.1'
-    implementation 'com.alibaba:fastjson:1.1.71.android'
+    api 'com.tencent:mmkv:1.2.1'
+    api 'com.alibaba:fastjson:1.1.71.android'
 }
 
 // 以下为JCenter
@@ -38,7 +38,7 @@ apply plugin: 'com.jfrog.bintray'
 
 def siteUrl = 'https://github.com/xubinhong/XyKernel'
 def gitUrl = 'https://github.com/AndroidStudy2015/JcenterDemo.git'
-version = "0.0.2"
+version = "0.0.3"
 group = "com.xuyi"
 
 install {
