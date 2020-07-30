@@ -1,10 +1,9 @@
 package com.example.kernel.impl;
 
 import android.app.Application;
-import android.text.TextUtils;
 
 import com.example.kernel.XyKernel;
-import com.example.kernel.interf.IStorage;
+import com.example.kernel.interf.IKv;
 import com.tencent.mmkv.MMKV;
 
 /**
@@ -12,9 +11,11 @@ import com.tencent.mmkv.MMKV;
  * xubinhong
  *
  * [Date]
- * 2020/7/26
+ * 2020/7/31
+ *
+ * TODO 不同应用之间的数据会串吗，需要加prefix吗
  */
-public class StorageImpl implements IStorage {
+public class KvImpl implements IKv {
 
     private MMKV kv;
 
@@ -39,7 +40,7 @@ public class StorageImpl implements IStorage {
         } else if (val instanceof String) {
             kv.encode(key, (String) val);
         } else {
-            kv.encode(key, XyKernel.jsonParser().parse(val));
+            kv.encode(key, XyKernel.json().parse(val));
         }
     }
 
@@ -75,7 +76,7 @@ public class StorageImpl implements IStorage {
 
     @Override
     public <T> T get(String key, Class<T> clazz) {
-        return XyKernel.jsonParser().parse(kv.decodeString(key), clazz);
+        return XyKernel.json().parse(kv.decodeString(key), clazz);
     }
 
     @Override

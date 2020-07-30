@@ -2,10 +2,12 @@ package com.example.kernel;
 
 import android.app.Application;
 
-import com.example.kernel.impl.JsonParserImpl;
-import com.example.kernel.impl.StorageImpl;
-import com.example.kernel.interf.IJsonParser;
-import com.example.kernel.interf.IStorage;
+import com.example.kernel.impl.FragmentImpl;
+import com.example.kernel.impl.JsonImpl;
+import com.example.kernel.impl.KvImpl;
+import com.example.kernel.interf.IFragment;
+import com.example.kernel.interf.IJson;
+import com.example.kernel.interf.IKv;
 
 /**
  * [Author]
@@ -15,23 +17,26 @@ import com.example.kernel.interf.IStorage;
  * 2020/7/26
  */
 public class XyKernel {
-
-    private static final IStorage storage = new StorageImpl();
-    private static final IJsonParser jsonParser = new JsonParserImpl();
-
-    /************ 初始化 ************/
+    private static IKv mKv = new KvImpl();
+    private static IJson mJson = new JsonImpl();
+    private static IFragment mFragment = new FragmentImpl();
 
     public static void init(Application app) {
-        storage.init(app);
+        mKv.init(app);
     }
 
-    /************ 获取基础库实例 ************/
-
-    public static IStorage storage() {
-        return storage;
+    // KV键值对
+    public static IKv kv() {
+        return mKv;
     }
 
-    public static IJsonParser jsonParser() {
-        return jsonParser;
+    // JSON处理
+    public static IJson json() {
+        return mJson;
+    }
+
+    // Fragment处理
+    public static IFragment fragment() {
+        return mFragment;
     }
 }

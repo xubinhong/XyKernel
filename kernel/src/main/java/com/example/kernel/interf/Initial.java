@@ -9,7 +9,7 @@ import android.app.Application;
  * [Date]
  * 2020/7/26
  */
-public interface XyInitial {
+public interface Initial {
 
     void init(Application app);
 }

@@ -3,16 +3,16 @@ package com.example.kernel.impl;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
-import com.example.kernel.interf.IJsonParser;
+import com.example.kernel.interf.IJson;
 
 /**
  * [Author]
  * xubinhong
  *
  * [Date]
- * 2020/7/26
+ * 2020/7/31
  */
-public class JsonParserImpl implements IJsonParser {
+public class JsonImpl implements IJson {
 
     @Override
     public String parse(Object obj) {

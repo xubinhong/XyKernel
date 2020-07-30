@@ -5,9 +5,9 @@ package com.example.kernel.interf;
  * xubinhong
  *
  * [Date]
- * 2020/7/26
+ * 2020/7/31
  */
-public interface IJsonParser {
+public interface IJson {
 
     String parse(Object obj);
 
