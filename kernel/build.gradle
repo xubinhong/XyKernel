@@ -38,7 +38,7 @@ apply plugin: 'com.jfrog.bintray'
 
 def siteUrl = 'https://github.com/xubinhong/XyKernel'
 def gitUrl = 'https://github.com/AndroidStudy2015/JcenterDemo.git'
-version = "0.0.1"
+version = "0.0.2"
 group = "com.xuyi"
 
 install {
