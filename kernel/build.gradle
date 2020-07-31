@@ -27,8 +27,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    api 'com.tencent:mmkv:1.2.1'
-    api 'com.alibaba:fastjson:1.1.71.android'
+    implementation 'com.tencent:mmkv:1.2.1'
+    implementation 'com.alibaba:fastjson:1.1.71.android'
 }
 
 // 以下为JCenter
@@ -37,8 +37,8 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 def siteUrl = 'https://github.com/xubinhong/XyKernel'
-def gitUrl = 'https://github.com/AndroidStudy2015/JcenterDemo.git'
-version = "0.0.3"
+def gitUrl = 'https://github.com/xubinhong/XyKernel.git'
+version = "0.0.6"
 group = "com.xuyi"
 
 install {
@@ -70,20 +70,28 @@ install {
         }
     }
 }
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
+
+// TODO 把这些看懂了，问题就解决了
+
+// java doc任务
 task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    options.linkSource true
-    classpath += project.files(project.android.getBootClasspath().join(File.pathSeparator))
     failOnError false
+    //    options.linkSource true
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(project.android.getBootClasspath().join(File.pathSeparator))
 }
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
+
+// source任务
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.sourceFiles
+//    from android.sourceSets.main.java.srcDirs
+}
+
 artifacts {
     archives javadocJar
     archives sourcesJar
